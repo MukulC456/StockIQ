@@ -6,10 +6,12 @@ from app.database import engine
 from app.models.user import User
 from app.models.category import Category
 from app.models.product import Product
+from app.models.transaction import Transaction
 
 from app.routers.auth import router as auth_router
 from app.routers.categories import router as category_router
 from app.routers.products import (router as product_router)
+from app.routers.inventory import (router as inventory_router)
 
 
 Base.metadata.create_all(bind=engine)
@@ -23,6 +25,7 @@ app = FastAPI(
 app.include_router(auth_router)
 app.include_router(category_router)
 app.include_router( product_router)
+app.include_router(inventory_router)
 
 
 @app.get("/", tags=["Home"])
