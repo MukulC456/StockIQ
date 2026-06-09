@@ -61,3 +61,23 @@ def low_stock_items(
             })
 
     return low_stock_products
+
+@router.get("/inventory-value")
+def dashboard_inventory_value(
+    db: Session = Depends(get_db)
+):
+
+    products = db.query(Product).all()
+
+    total_value = 0
+
+    for product in products:
+
+        total_value += (
+            product.current_stock *
+            product.cost_price
+        )
+
+    return {
+        "inventory_value": total_value
+    }
