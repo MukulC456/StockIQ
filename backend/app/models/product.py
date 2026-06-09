@@ -1,19 +1,23 @@
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Float,
-    ForeignKey
-)
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
 
 from sqlalchemy.orm import relationship
 
 from app.database import Base
 
+
 class Product(Base):
+
     __tablename__ = "products"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
 
     sku = Column(
         String(50),
@@ -21,7 +25,10 @@ class Product(Base):
         nullable=False
     )
 
-    name = Column(String(100))
+    name = Column(
+        String(100),
+        nullable=False
+    )
 
     description = Column(String)
 
@@ -44,4 +51,6 @@ class Product(Base):
         ForeignKey("categories.id")
     )
 
-    category = relationship("Category")
+    category = relationship(
+        "Category"
+    )
