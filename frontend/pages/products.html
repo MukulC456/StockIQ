@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>StockIQ</h2>
+
+    <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="categories.html">Categories</a>
+        <a href="products.html">Products</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="reports.html">Reports</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Products</h1>
+    </div>
+
+    <div class="card">
+
+        <input id="sku" placeholder="SKU">
+        <input id="name" placeholder="Name">
+        <input id="description" placeholder="Description">
+        <input id="cost_price" placeholder="Cost Price">
+        <input id="selling_price" placeholder="Selling Price">
+        <input id="minimum_stock" placeholder="Minimum Stock">
+        <input id="category_id" placeholder="Category ID">
+
+        <button
+            class="btn"
+            onclick="createProduct()"
+        >
+            Add Product
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="productTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="../js/api.js"></script>
+<script src="../js/products.js"></script>
+
+</body>
+</html>
