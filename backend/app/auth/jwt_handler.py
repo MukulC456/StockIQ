@@ -1,7 +1,5 @@
-from datetime import datetime
-from datetime import timedelta
-
-from jose import jwt
+from datetime import datetime, timedelta
+from jose import jwt, JWTError
 
 from app.config import settings
 
@@ -18,10 +16,23 @@ def create_access_token(data: dict):
         {"exp": expire}
     )
 
-    token = jwt.encode(
+    return jwt.encode(
         payload,
         settings.SECRET_KEY,
         algorithm=settings.ALGORITHM
     )
 
-    return token
+
+def verify_token(token: str):
+
+    try:
+        payload = jwt.decode(
+            token,
+            settings.SECRET_KEY,
+            algorithms=[settings.ALGORITHM]
+        )
+
+        return payload
+
+    except JWTError:
+        return None
