@@ -12,6 +12,8 @@ from app.routers.auth import router as auth_router
 from app.routers.categories import router as category_router
 from app.routers.products import (router as product_router)
 from app.routers.inventory import (router as inventory_router)
+from app.routers.dashboard import (router as dashboard_router)
+from app.routers.reports import (router as reports_router)
 
 
 Base.metadata.create_all(bind=engine)
@@ -26,7 +28,8 @@ app.include_router(auth_router)
 app.include_router(category_router)
 app.include_router( product_router)
 app.include_router(inventory_router)
-
+app.include_router(dashboard_router)
+app.include_router(reports_router)
 
 @app.get("/", tags=["Home"])
 def home():
